@@ -6,7 +6,7 @@
 /*   By: jnovais <jnovais@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 10:00:18 by jnovais           #+#    #+#             */
-/*   Updated: 2025/12/27 10:00:18 by jnovais          ###   ########.fr       */
+/*   Updated: 2025/12/27 17:17:14 by jnovais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 int	*ft_lis_util_helper(int max)
 {
 	int	*val;
+	int	i;
 
-	val = (int *) malloc (sizeof(int) * (max + 1));
+	val = ft_calloc(max + 1, sizeof(int));
 	if (!val)
 		ft_display_exit();
-	val[max - 1] = 2147483647;
+	i = 0;
+	while (i <= max)
+	{
+		val[i] = 2147483647;
+		i++;
+	}
 	return (val);
 }
 

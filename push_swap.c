@@ -6,7 +6,7 @@
 /*   By: jnovais <jnovais@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 10:02:13 by jnovais           #+#    #+#             */
-/*   Updated: 2025/12/27 10:02:13 by jnovais          ###   ########.fr       */
+/*   Updated: 2025/12/28 18:10:31 by jnovais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,25 @@ void	ft_check_argv(int argc, char **argv, t_list **stack_a)
 {
 	int		size;
 	char	**arg;
+	int		i;
 
 	arg = NULL;
 	size = 0;
-	if (argc == 2)
+	if (argc == 2 && argv[1][0] != '\0')
 	{
 		arg = ft_split(argv[1], ' ');
 		while (arg[size] != NULL)
 			size++;
 		ft_write_lst(stack_a, size, arg, 0);
+		i = 0;
+		while (arg[i])
+			free(arg[i++]);
 		free(arg);
 	}
 	else if (argc >= 3)
 		ft_write_lst(stack_a, argc, argv, 1);
+	else
+		ft_display_exit();
 }
 
 int	main(int argc, char **argv)
